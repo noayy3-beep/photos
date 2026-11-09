@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>8 November</title>
+<style>
+html,body{margin:0;height:100%;background:#111;color:#aaa;font:14px system-ui,sans-serif;overflow:hidden}
+img{position:fixed;inset:0;width:100%;height:100%;object-fit:contain}
+#n{position:fixed;bottom:8px;right:12px}
+</style></head><body>
+<img id="i" alt=""><div id="n"></div>
+<script>
+const P=["P1000824.jpg","P1000831.jpg","P1000832.jpg","P1000833.jpg","P1000835.jpg","P1000836.jpg","P1000838.jpg","P1000839.jpg","P1000840.jpg","P1000841.jpg","P1000842.jpg","P1000843.jpg","P1000844.jpg","P1000846.jpg","P1000847.jpg","P1000848.jpg","P1000851.jpg","P1000852.jpg","P1000853.jpg","P1000857.jpg","P1000858.jpg","P1000859.jpg","P1000866.jpg","P1000869.jpg","P1000870.jpg","P1000871.jpg","P1000872.jpg","P1000873.jpg","P1000875.jpg","P1000876.jpg","P1000877.jpg","P1000885.jpg","P1000886.jpg","P1000887.jpg","P1000888.jpg","P1000889.jpg","P1000892.jpg","P1000894.jpg","P1000897.jpg","P1000908.jpg"];let k=0;const i=document.getElementById('i'),n=document.getElementById('n');
+function show(){i.src='photos/'+P[k];n.textContent=(k+1)+' / '+P.length;new Image().src='photos/'+P[(k+1)%P.length]}
+function go(d){k=(k+d+P.length)%P.length;show()}
+addEventListener('keydown',e=>{if(e.key=='ArrowRight'||e.key==' ')go(1);if(e.key=='ArrowLeft')go(-1)});
+addEventListener('click',e=>go(e.clientX<innerWidth/2?-1:1));
+let x;addEventListener('touchstart',e=>x=e.touches[0].clientX);addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-x;if(Math.abs(d)>40)go(d<0?1:-1)});
+show();
+</script></body></html>
